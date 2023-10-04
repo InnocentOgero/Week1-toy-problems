@@ -1,8 +1,9 @@
 //write prompt to enter benefits and basic salary
 const basicSalary=Number(prompt("Enter basic salay"));
 const benefits=Number(prompt('Enter benefits'));
-const grossSalary=basicSalary+benefits;
-const pensionPay=5600//declare value for pensionble pay used to calculate nssf NB just for testing if code works
+const grossSalary=basicSalary+benefits;//calculate gross salary
+//the nssf value is not correct using it just for testing
+const pensionPay=0.1*grossSalary//declare value for pensionble pay used to calculate nssf NB just for testing if code works
 //calculate the payee per interval
 const payeeInterval1=24000*0.1
 const payeeInterval2=(32333-24000)*0.25
@@ -10,8 +11,8 @@ const payeeInterval3=(500000-32333)*0.3
 const payeeInterval4=(800000-500000)*0.325
 //function to calculate total payee depending on the interval which the amount of grossSalary falls.
 function CalculatePayee(grossSalary){
-    if(grossSalary<=2400){
-        return payeeInterval1
+    if(grossSalary<=24000){
+        return grossSalary*0.1
     }
     else if(grossSalary>=24001&&grossSalary<=32333){
         const totalPayee=(grossSalary-240000)*0.25+payeeInterval1
@@ -27,7 +28,7 @@ function CalculatePayee(grossSalary){
         return totalPayee
     }
     else{
-        const totalPayee=(grossSalary-80000)*0.35+payeeInterval1+payeeInterval2+payeeInterval3+payeeInterval4
+        const totalPayee=(grossSalary-800000)*0.35+payeeInterval1+payeeInterval2+payeeInterval3+payeeInterval4
         return totalPayee
     }
     
